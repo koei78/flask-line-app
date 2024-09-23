@@ -1,0 +1,142 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <style>
+        body {
+            background-color: rgba(255, 93, 182, 0.44);
+        }
+        .main {
+            background-color: rgb(229, 238, 150);
+            width: 350px;
+            height: 550px;
+            margin: 40px auto;
+            border-radius: 10px;
+            border: 2px solid black;
+        }
+        .top {
+            width: 270px;
+            height: 60px;
+            border-radius: 5px;
+            background-color: black;
+            font-size: 10px;
+            text-align: center;
+            margin: 0 auto;
+            color: white;
+        }
+        .top h1 {
+            padding-top: 15px;
+        }
+        .cp {
+            font-size: 20px;
+            width: 300px;
+            height: 300px;
+            text-align: center;
+            margin: 20px auto;
+            color: red;
+        }
+        table {
+            margin: 20px auto;
+            width: 100%;
+            border-collapse: collapse;
+        }
+        th {
+            background-color: white;
+            font-size: 20px;
+            padding: 5px;
+            text-align: left;
+            margin: 0px 20px;
+            border-left: 2px solid red;
+            border-right: 2px solid red;
+            border-top: 2px solid red;
+        }
+        .one {
+            border-bottom: 2px solid red;
+        }
+        input[type="checkbox"] {
+            width: 25px;
+            height: 25px;
+            appearance: none;
+            border: 2px solid black;
+            border-radius: 50%;
+            outline: none;
+            cursor: pointer;
+            position: relative;
+        }
+        input[type="checkbox"]:checked {
+            background-color: red;
+        }
+        input[type="checkbox"]:checked::before {
+            content: '';
+            position: absolute;
+            top: 50%;
+            left: 50%;
+            transform: translate(-50%, -50%);
+            width: 10px;
+            height: 10px;
+            background-color: white;
+            border-radius: 50%;
+        }
+        th {
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+        }
+        .bt {
+            width: 150px;
+            height: 50px;
+            font-size: 20px;
+            background-color: green;
+            color: white;
+        }
+    </style>
+    <script>
+        function validateForm() {
+            // チェックボックスをすべて取得
+            var checkboxes = document.querySelectorAll('input[type="checkbox"]');
+            var allChecked = true;
+
+            // チェックされているかを確認
+            checkboxes.forEach(function(checkbox) {
+                if (!checkbox.checked) {
+                    allChecked = false;
+                }
+            });
+
+            if (!allChecked) {
+                alert("すべてのチェック項目を完了してください");
+                return false; // フォームの送信を防ぐ
+            }
+
+            return true; // すべてチェックされていれば送信
+        }
+    </script>
+</head>
+<body>
+    <div class="main">
+        <div class="top">
+            <h1>お掃除チェックリスト</h1>
+        </div>
+        <div class="cp">
+            <form action="/" method="POST" onsubmit="return validateForm();">
+                <table>
+                    <tr>
+                        <th>風呂<input type="checkbox" name="check"></th>
+                    </tr>
+                    <tr>
+                        <th>換気扇<input type="checkbox" name="check"></th>
+                    </tr>
+                    <tr>
+                        <th>空調フィルター<input type="checkbox" name="check"></th>
+                    </tr>
+                    <tr>
+                        <th class="one">エアコン<input type="checkbox" name="check"></th>
+                    </tr>
+                </table>
+                <input class="bt" type="submit" value="掃除完了">
+            </form>
+        </div>
+    </div>
+</body>
+</html>
